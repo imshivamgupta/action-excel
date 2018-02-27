@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Action Shoes :: Login</title>
+</head>
+
+<body>
+    <!-- ===Start: Main Content=== -->
+    <div class="container">
+        <div class="card card-container">
+            <img id="profile-img" class="profile-img-card" src="img/action-shoe-logo.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <!-- Login Form -->
+            <form class="form-signin" action="config/login.php" method="POST">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+                <!-- <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div> -->
+                <button class="btn btn-lg btn-primary btn-block btn-signin font-weight-light" type="submit">Sign in</button>
+                <p class="lead text-danger" id="msg">
+                    <?php
+                        session_start();
+                        if(isset($_SESSION['msg'])){
+                            echo $_SESSION['msg'];
+                            unset($_SESSION['msg']);
+                        }
+                    ?>
+                </p>
+            </form>
+            <!-- /form -->
+            <!-- <a href="#" class="forgot-password">
+                Forgot the password?
+            </a> -->
+        </div>
+        <!-- /card-container -->
+    </div>
+    <!-- /container -->
+    <!-- ===End: Main Content=== -->
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script>
+        $("#inputPassword").click(function(){
+            setInterval(function(){ $("#msg").hide(); }, 2000);
+        });
+    </script>
+</body>
+
+</html>
